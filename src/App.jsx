@@ -21,7 +21,17 @@ function App() {
       <div className="App">
         {
           puppies.map((puppy) => {
-            return <p className="names" onClick={() => setFeatPupId(puppy.id)} key={puppy.id}>{puppy.name}</p>
+            return <p key={puppy.id} >
+            <span
+            // Span tag added to have the pointer change only on text, not entire <p> element
+            className="names" 
+            onClick={() => setFeatPupId(puppy.id)}
+            // For Different pointer style when hovering link
+            style={{ cursor: 'pointer' }}
+            >
+            {puppy.name}
+            </span>
+            </p>
           })
         }
 
@@ -32,6 +42,9 @@ function App() {
               <li>Age: {featuredPup.age}</li>
               <li>Email: {featuredPup.email}</li>
             </ul>
+
+            {/* // Adding a button to close the details pupcard */}
+            <button className="close-button" onClick={() => setFeatPupId(null)}>Close Details</button>
           </div>
         )}
       </div>
